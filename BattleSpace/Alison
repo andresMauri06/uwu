@@ -1,0 +1,15 @@
+public class Jugador {
+    private String nombre;
+    private int salud;
+    private int ataque;
+    private int puntaje;
+    private int ataqueAdicional;
+    private int saludAdicional;
+
+    public Jugador(String nombre, int salud, int ataque, int ataqueAdicional, int saludAdicional) {
+      this.nombre = nombre;
+      this.salud = salud;
+      this.ataque = ataque;
+      this.ataqueAdicional = ataqueAdicional;
+      this.saludAdicional = saludAdicional;
+      this.puntaje = 0;
