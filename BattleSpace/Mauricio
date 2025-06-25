@@ -1,13 +1,3 @@
-public class NivelDeDificultad {
-    private String nombre;
-    private int salud;
-    private int ataque;
-
-    public NivelDeDificultad(String nombre, int salud, int ataque) {
-      this.nombre = nombre;
-      this.salud = salud;
-      this.ataque = ataque;
-    }
 
 public class BattleSpaceCampo {
     static final int FILAS = 10;
