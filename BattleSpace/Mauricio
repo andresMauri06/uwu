@@ -33,7 +33,7 @@ public class BattleSpaceCampo {
 }
 public class Enemigo {
     private int codigo;
-    private String nombre; // campo tipo?
+    private String nombre; 
     private int salud;
     private int ataque;
 
