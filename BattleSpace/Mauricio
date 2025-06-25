@@ -31,3 +31,35 @@ public class BattleSpaceCampo {
         }
     }
 }
+public class Enemigo {
+    private int codigo;
+    private String nombre; // campo tipo?
+    private int salud;
+    private int ataque;
+
+    public Enemigo() {}
+
+    public Enemigo(int codigo, String nombre, int salud, int ataque) {
+
+      this.nombre = nombre;
+      this.salud = salud;
+      this.ataque = ataque;
+    }
+
+    public void atacar(Jugador jugador) {
+      jugador.salud -= this.ataque;
+    }
+
+    public void recibirDaño(int cantidad) {
+      this.salud -= cantidad;
+    }
+
+    public boolean estaVivo() {
+      return this.salud > 0;
+    }
+
+    public String mostrarEstado() {
+      return String.format("Enemigo: %s | Salud: %d | Ataque: %d", this.nombre, this.salud, this.ataque);
+    }
+    
+  }
