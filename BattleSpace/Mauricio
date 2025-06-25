@@ -8,3 +8,36 @@ public class NivelDeDificultad {
       this.salud = salud;
       this.ataque = ataque;
     }
+
+public class BattleSpaceCampo {
+    static final int FILAS = 10;
+    static final int COLUMNAS = 10;
+    static char[][] campo = new char[FILAS][COLUMNAS];
+
+    public static void main(String[] args) {
+        inicializarCampo();
+        mostrarCampo();
+    }
+    public static void inicializarCampo() {
+        for (int i = 0; i < FILAS; i++) {
+            for (int j = 0; j < COLUMNAS; j++) {
+                campo[i][j] = '~'; // Puedes usar cualquier otro símbolo, como '.'
+            }
+        }
+    }
+    public static void mostrarCampo() {
+        System.out.println("\n  Campo de Batalla Espacial");
+        System.out.print("  ");
+        for (int j = 0; j < COLUMNAS; j++) {
+            System.out.print(j + " ");
+        }
+        System.out.println();
+        for (int i = 0; i < FILAS; i++) {
+            System.out.print(i + " ");
+            for (int j = 0; j < COLUMNAS; j++) {
+                System.out.print(campo[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
