@@ -91,7 +91,7 @@ public class Juego {
     }
 
     public void iniciarJuego() {
-        generarEnemigos(5); 
+        generarEnemigos(2); 
         System.out.println("El juego ha comenzado!");
         mostrarEstado();
     }
