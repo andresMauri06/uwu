@@ -16,7 +16,6 @@ public class BattleSpaceCampo {
         inicializarJugadorYEnemigos();
         mostrarCampo();
 
-        // Bucle de juego
         while (!enemigos.isEmpty() && jugador.vida > 0) {
             jugarJugador();
             jugarEnemigos();
