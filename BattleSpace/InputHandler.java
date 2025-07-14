@@ -17,19 +17,19 @@ public class InputHandler implements Runnable {
     @Override
     public void run() {
         try {
-            // Configurar terminal para input sin buffer
+         
             if (System.getProperty("os.name").toLowerCase().contains("windows")) {
-                // En Windows es más complicado, pero funciona básicamente
+               
                 while (running) {
                     if (System.in.available() > 0) {
                         int key = System.in.read();
                         if (key == -1) break;
                         processInput((char) key);
                     }
-                    Thread.sleep(10); // Pequeña pausa para no consumir CPU
+                    Thread.sleep(10); 
                 }
             } else {
-                // Linux/Mac
+                
                 while (running) {
                     if (System.in.available() > 0) {
                         int key = System.in.read();
