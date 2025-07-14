@@ -1,4 +1,4 @@
-// Renderer.java
+
 package battlespace;
 
 public class Renderer {
