@@ -19,7 +19,6 @@ public class Renderer {
 
         StringBuilder screen = new StringBuilder();
 
-        // Línea 1: Score y vidas
         screen.append("SCORE: ").append(score).append("   LIVES: ");
         for (int i = 0; i < lives; i++) {
             screen.append("♥");
