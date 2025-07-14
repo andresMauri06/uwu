@@ -9,7 +9,7 @@ public class Main {
         try {
             System.in.read();
         } catch (Exception e) {
-            // Ignore
+            
         }
 
         Game game = new Game();
