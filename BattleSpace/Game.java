@@ -20,15 +20,14 @@ public class Game {
 
     private InputHandler inputHandler;
 
-    // Contadores para movimientos lentos
     private int enemyMoveCounter = 0;
-    private int enemyMoveInterval = 90; // cada 90 frames (3 segundos a 30fps)
+    private int enemyMoveInterval = 90; 
 
     private int bulletMoveCounter = 0;
-    private int bulletMoveInterval = 15; // cada 15 frames (0.5 segundos)
+    private int bulletMoveInterval = 15; 
 
     private int bulletFireCooldown = 0;
-    private final int BULLET_FIRE_DELAY = 10; // 10 frames de delay entre disparos
+    private final int BULLET_FIRE_DELAY = 10;
 
     public Game() {
         board = new char[HEIGHT][WIDTH];
@@ -117,7 +116,7 @@ public class Game {
                 bullets.clear();
                 spawnEnemies();
                 needsRender = true;
-                // Aumentar dificultad un poco
+                
                 if (enemyMoveInterval > 60) {
                     enemyMoveInterval -= 5;
                 }
@@ -168,13 +167,13 @@ public class Game {
                 board[e.getY()][e.getX()] = '@';
         }
 
-        // Dibujar balas
+        
         for (Bullet b : bullets) {
             if (b.getY() >= 0 && b.getY() < HEIGHT)
                 board[b.getY()][b.getX()] = '|';
         }
 
-        // Usar el renderer optimizado
+       
         Renderer.renderGame(board, score, lives, WIDTH);
     }
 
@@ -196,19 +195,19 @@ public class Game {
 
     public void movePlayerLeft() {
         player.move(-1, WIDTH);
-        render(); // Solo renderizar cuando el jugador se mueva
+        render(); 
     }
 
     public void movePlayerRight() {
         player.move(1, WIDTH);
-        render(); // Solo renderizar cuando el jugador se mueva
+        render(); 
     }
 
     public void fireBullet() {
         if (bulletFireCooldown <= 0) {
             bullets.add(new Bullet(player.getX(), player.getY() - 1));
             bulletFireCooldown = BULLET_FIRE_DELAY;
-            render(); // Solo renderizar cuando se dispare
+            render(); 
         }
     }
 
