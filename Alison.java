@@ -1,0 +1,166 @@
+package com.mycompany.alison;
+
+import java.util.Random;
+
+public class Juego {
+    
+    public class Jugador {
+        private String nombre;
+        private int salud;
+        private int puntos;
+        
+        public Jugador(String nombre) {
+            this.nombre = nombre;
+            this.salud = 100;  
+            this.puntos = 0;   
+        }
+
+        public void realizarAcciones(Enemigo[] enemigos) {
+            Random rand = new Random();
+            
+            int enemigoIndex = rand.nextInt(enemigos.length);
+            Enemigo enemigo = enemigos[enemigoIndex];
+            if (enemigo.isVivo()) {
+                int dano = rand.nextInt(10) + 5; 
+                System.out.println(nombre + " ataca a " + enemigo.getNombre() + " por " + dano + " de daño.");
+                enemigo.recibirDano(dano);
+                this.puntos += 10; 
+            }
+        }
+
+        public int getSalud() {
+            return salud;
+        }
+
+        public void recibirDano(int dano) {
+            this.salud -= dano;
+            if (this.salud < 0) this.salud = 0;
+        }
+
+        public int getPuntos() {
+            return puntos;
+        }
+    }
+
+    public class Enemigo {
+        private String nombre;
+        private int salud;
+        private int dano;
+        
+        public Enemigo(String nombre, int salud, int dano) {
+            this.nombre = nombre;
+            this.salud = salud;
+            this.dano = dano;
+        }
+
+        public void atacar(Jugador jugador) {
+            if (this.salud > 0) {
+                System.out.println(nombre + " ataca a " + jugador.nombre + " por " + dano + " de daño.");
+                jugador.recibirDano(dano);
+            }
+        }
+
+        public void recibirDano(int dano) {
+            this.salud -= dano;
+            if (this.salud < 0) this.salud = 0;
+        }
+
+        public boolean isVivo() {
+            return this.salud > 0;
+        }
+
+        public String getNombre() {
+            return nombre;
+        }
+
+        public int getSalud() {
+            return salud;
+        }
+    }
+
+    private Jugador jugador;
+    private Enemigo[] enemigos;
+    private boolean juegoTerminado;
+    private int turno;
+
+    public Juego(String nombreJugador) {
+        this.jugador = new Jugador(nombreJugador);
+        this.enemigos = new Enemigo[0];
+        this.juegoTerminado = false;
+        this.turno = 1;
+    }
+
+    public void iniciarJuego() {
+        generarEnemigos(2); 
+        System.out.println("El juego ha comenzado!");
+        mostrarEstado();
+    }
+
+    public void ejecutarTurno() {
+        if (!juegoTerminado) {
+            System.out.println("Turno " + turno);
+            jugador.realizarAcciones(enemigos);
+            
+            for (Enemigo enemigo : enemigos) {
+                if (enemigo.isVivo()) {
+                    enemigo.atacar(jugador);
+                }
+            }
+            
+            verificarFinDelJuego();
+            turno++;
+        } else {
+            System.out.println("El juego ha terminado.");
+        }
+    }
+
+    private void verificarFinDelJuego() {
+        if (jugador.getSalud() <= 0) {
+            juegoTerminado = true;
+            System.out.println("¡Has perdido! El jugador ha quedado sin salud.");
+        }
+        
+        boolean todosMuertos = true;
+        for (Enemigo enemigo : enemigos) {
+            if (enemigo.isVivo()) {
+                todosMuertos = false;
+                break;
+            }
+        }
+        
+        if (todosMuertos) {
+            juegoTerminado = true;
+            System.out.println("¡Has ganado! Todos los enemigos han sido derrotados.");
+        }
+    }
+
+    private void mostrarEstado() {
+        System.out.println("Estado del jugador: Salud = " + jugador.getSalud() + ", Puntos = " + jugador.getPuntos());
+        for (Enemigo enemigo : enemigos) {
+            if (enemigo.isVivo()) {
+                System.out.println("Enemigo: " + enemigo.getNombre() + " - Salud = " + enemigo.getSalud());
+            }
+        }
+    }
+
+    private void generarEnemigos(int cantidad) {
+        enemigos = new Enemigo[cantidad];
+        Random rand = new Random();
+        
+        for (int i = 0; i < cantidad; i++) {
+            String nombre = "Enemigo " + (i + 1);
+            int salud = rand.nextInt(50) + 50;  
+            int dano = rand.nextInt(10) + 5;   
+            enemigos[i] = new Enemigo(nombre, salud, dano);
+        }
+    }
+
+    public static void main(String[] args) {
+        Juego juego = new Juego("Jugador1");
+        juego.iniciarJuego();
+        
+        while (!juego.juegoTerminado) {
+            juego.ejecutarTurno();
+        }
+    }
+}
