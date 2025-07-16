@@ -16,8 +16,7 @@ public class Jugador {
         this.x = x;
         this.y = y;
     }
-
-    // Mover al jugador en las 4 direcciones (horizontal y vertical)
+    
     public void mover(int dx, int dy, int maxWidth, int maxHeight) {
         x += dx;
         y += dy;
@@ -33,8 +32,6 @@ public class Jugador {
         enemigo.recibirDaño(this.ataque);
         this.puntaje += 10;
     }
-
-    // Recibir daño
     public void recibirDaño(int cantidad) {
         this.salud -= cantidad;
         if (this.salud < 0) this.salud = 0;
