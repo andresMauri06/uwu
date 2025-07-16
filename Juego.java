@@ -28,14 +28,14 @@ public class Juego {
         new Thread(manejadorDeEntrada).start();
     }
 
-    // Inicia el juego creando el jugador y los enemigos
+    
     public void iniciarJuego() {
         juegoTerminado = false;
         turno = 1;
         mostrarEstado();
     }
 
-    // Ejecuta un turno donde el jugador y los enemigos actúan
+    
     public void ejecutarTurno() {
         if (juegoTerminado) {
             System.out.println("El juego ha terminado.");
@@ -44,22 +44,21 @@ public class Juego {
 
         System.out.println("Turno " + turno);
 
-        // El jugador realiza su acción
+    
         jugador.atacar(enemigos.get(0));
 
-        // Los enemigos atacan al jugador
+        
         for (Enemigo enemigo : enemigos) {
             if (enemigo.estaVivo()) {
                 enemigo.atacar(jugador);
             }
         }
 
-        // Verificar el fin del juego
         verificarFinDelJuego();
         turno++;
     }
 
-    // Verifica si el jugador ha ganado o perdido
+     
     public void verificarFinDelJuego() {
         if (!jugador.estaVivo()) {
             juegoTerminado = true;
@@ -71,8 +70,7 @@ public class Juego {
             System.out.println("¡Has ganado! Todos los enemigos han sido derrotados.");
         }
     }
-
-    // Muestra en consola el estado del jugador y los enemigos
+    
     public void mostrarEstado() {
         System.out.println("Jugador: " + jugador.getNombre() + " - Salud: " + jugador.getSalud());
         System.out.println("Enemigos restantes:");
@@ -81,7 +79,6 @@ public class Juego {
         }
     }
 
-    // Genera enemigos con valores aleatorios
     public void generarEnemigos(int cantidad) {
         for (int i = 0; i < cantidad; i++) {
             int x = (int) (Math.random() * ANCHO);
@@ -90,36 +87,30 @@ public class Juego {
         }
     }
 
-    // Mueve al jugador hacia la izquierda
     public void moverJugadorIzquierda() {
         jugador.mover(-1, 0, ANCHO, ALTO);
         renderizar();
     }
-
-    // Mueve al jugador hacia la derecha
+    
     public void moverJugadorDerecha() {
         jugador.mover(1, 0, ANCHO, ALTO);
         renderizar();
     }
 
-    // Mueve al jugador hacia arriba
     public void moverJugadorArriba() {
         jugador.mover(0, -1, ANCHO, ALTO);
         renderizar();
     }
 
-    // Mueve al jugador hacia abajo
     public void moverJugadorAbajo() {
         jugador.mover(0, 1, ANCHO, ALTO);
         renderizar();
     }
-
-    // Dispara una bala
+    
     public void dispararBala() {
         jugador.disparar();
     }
 
-    // Renderiza el tablero
     public void renderizar() {
         for (int i = 0; i < ALTO; i++) {
             for (int j = 0; j < ANCHO; j++) {
@@ -135,7 +126,6 @@ public class Juego {
             }
         }
 
-        // Renderizado del tablero en consola
         for (int i = 0; i < ALTO; i++) {
             for (int j = 0; j < ANCHO; j++) {
                 System.out.print(tablero[i][j]);
