@@ -1,6 +1,6 @@
 package battlespace;
 
-public class ManejadorDeEntrada implements Runnable {
+public class ManejadorDeEntrada implements corriendo  {
     private Juego juego;
     private boolean corriendo = true;
 
@@ -13,7 +13,7 @@ public class ManejadorDeEntrada implements Runnable {
     }
 
     @Override
-    public void run() {
+    public void corriendo () {
         try {
             
             while (corriendo) {
