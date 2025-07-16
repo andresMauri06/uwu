@@ -26,8 +26,7 @@ public class Jugador {
         if (y < 0) y = 0;
         if (y >= maxHeight) y = maxHeight - 1;
     }
-
-    // Atacar a un enemigo
+    
     public void atacar(Enemigo enemigo) {
         enemigo.recibirDaño(this.ataque);
         this.puntaje += 10;
@@ -37,17 +36,13 @@ public class Jugador {
         if (this.salud < 0) this.salud = 0;
     }
 
-    // Verificar si el jugador sigue vivo
     public boolean estaVivo() {
         return this.salud > 0;
     }
 
-    // Disparar (lógica del disparo no implementada aún)
     public void disparar() {
-        // Aquí va la lógica para disparar
     }
-
-    // Getters y setters
+    
     public String getNombre() {
         return nombre;
     }
