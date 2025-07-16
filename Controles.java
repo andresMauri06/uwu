@@ -15,21 +15,21 @@ public class ManejadorDeEntrada implements Runnable {
     @Override
     public void run() {
         try {
-            // Configurar la terminal para entrada sin buffer
+            
             while (corriendo) {
                 if (System.in.available() > 0) {
                     int tecla = System.in.read();
                     if (tecla == -1) break;
                     procesarEntrada((char) tecla);
                 }
-                Thread.sleep(10); // Pausa pequeña para no consumir CPU
+                Thread.sleep(10); 
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    // Procesar las teclas presionadas
+    
     private void procesarEntrada(char c) {
         switch (Character.toUpperCase(c)) {
             case 'A':
