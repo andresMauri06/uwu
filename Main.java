@@ -11,10 +11,10 @@ public class Principal {
         try {
             System.in.read();
         } catch (Exception e) {
-            // Ignorar
+            
         }
 
-        Juego juego = new Juego(5); // Crear el juego con 5 enemigos
+        Juego juego = new Juego(5); 
         juego.iniciarJuego();
 
         while (!juego.juegoTerminado) {
