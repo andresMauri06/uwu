@@ -118,11 +118,10 @@ public class Juego {
             }
         }
 
-        tablero[jugador.obtenerY()][jugador.obtenerX()] = '^';  // Representar al jugador
-
+        tablero[jugador.obtenerY()][jugador.obtenerX()] = '^';  
         for (Enemigo enemigo : enemigos) {
             if (enemigo.estaVivo()) {
-                tablero[enemigo.obtenerY()][enemigo.obtenerX()] = '@';  // Representar a los enemigos
+                tablero[enemigo.obtenerY()][enemigo.obtenerX()] = '@'; 
             }
         }
 
