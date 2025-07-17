@@ -56,7 +56,7 @@ public class Enemigo {
 
     public Mejora soltarMejora() {
         Random rand = new Random();
-        if (rand.nextDouble() < 0.3) { // 30% de probabilidad
+        if (rand.nextDouble() < 0.3) {
             String tipoMejora = rand.nextBoolean() ? "vida" : "ataque";
             int valor = 10;
             return new Mejora(tipoMejora, valor, this.fila, this.columna);
