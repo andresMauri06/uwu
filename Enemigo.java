@@ -30,29 +30,24 @@ public class Enemigo {
         System.out.println(tipo + " recibe " + cantidad + " de daño. Salud restante: " + this.salud);
     }
 
-    public boolean estaVivo() {
+    public boolean estaViva() {
         return this.salud > 0;
     }
 
     public void moverAleatorio(int filas, int columnas) {
         Random rand = new Random();
-        int direccion = rand.nextInt(4); // 0: arriba, 1: abajo, 2: izquierda, 3: derecha
+        int direccion = rand.nextInt(10); 
         int nuevaFila = this.fila;
         int nuevaColumna = this.columna;
 
-        switch (direccion) {
-            case 0:
-                if (nuevaFila > 0) nuevaFila--;
-                break;
-            case 1:
-                if (nuevaFila < filas - 1) nuevaFila++;
-                break;
-            case 2:
-                if (nuevaColumna > 0) nuevaColumna--;
-                break;
-            case 3:
-                if (nuevaColumna < columnas - 1) nuevaColumna++;
-                break;
+        if (direccion < 7) { 
+            if (nuevaFila < filas - 1) nuevaFila++;
+        } else if (direccion == 7) { 
+            if (nuevaColumna > 0) nuevaColumna--;
+        } else if (direccion == 8) { 
+            if (nuevaColumna < columnas - 1) nuevaColumna++;
+        } else {
+            if (nuevaFila > 0) nuevaFila--;
         }
 
         this.fila = nuevaFila;
@@ -61,7 +56,7 @@ public class Enemigo {
 
     public Mejora soltarMejora() {
         Random rand = new Random();
-        if (rand.nextDouble() < 0.3) {
+        if (rand.nextDouble() < 0.3) { // 30% de probabilidad
             String tipoMejora = rand.nextBoolean() ? "vida" : "ataque";
             int valor = 10;
             return new Mejora(tipoMejora, valor, this.fila, this.columna);
