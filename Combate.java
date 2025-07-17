@@ -2,7 +2,7 @@ package battlespace;
 
 import java.util.Arrays;
 
-public class Combate {
+public class CampodeBatalla {
     private final int filas = 20, columnas = 40;
     private char[][] campo = new char[filas][columnas];
     private Jugador jugador;
@@ -10,7 +10,7 @@ public class Combate {
     private Proyectil[] proyectilesJugador = new Proyectil[20];
     private Proyectil[] proyectilesEnemigos = new Proyectil[30];
 
-    public Combate() {
+    public CampodeBatalla() {
         jugador = new Jugador(filas - 1, columnas / 2);
         for (int i = 0; i < enemigos.length; i++) {
             enemigos[i] = new Enemigo(2, 5 + i * 6);
