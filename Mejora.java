@@ -1,7 +1,5 @@
 package battlespace;
 
-import battlespace.Jugador;
-
 public class Mejora {
     private String tipo;
     private int valor;
@@ -19,18 +17,12 @@ public class Mejora {
         return tipo;
     }
 
-    public String description() {
-        return "Mejora de " + tipo + " con valor +" + valor;
+    public int getValor() {
+        return valor;
     }
 
-    public void aplicar(Jugador jugador) {
-        if (tipo.equals("vida")) {
-            jugador.recibirCura(valor);
-            System.out.println("Jugador recibe mejora de vida +" + valor + ". Salud actual: " + jugador.getSalud());
-        } else if (tipo.equals("ataque")) {
-            jugador.aumentarAtaque(valor);
-            System.out.println("Jugador recibe mejora de ataque +" + valor + ". Ataque actual: " + jugador.getAtaque());
-        }
+    public String descripcion() {
+        return "Mejora de " + tipo + " con valor +" + valor;
     }
 
     public int getFila() {
