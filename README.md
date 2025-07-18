@@ -1,6 +1,6 @@
 # ProyectoFinal
 
-#Joshiro Lin Ticona Checya
+#Joshiro Lin Checya Ticona
 
 #Mauricio  Andres Condori Castro
 
