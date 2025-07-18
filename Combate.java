@@ -45,7 +45,7 @@ public class Combate {
         for (Enemigo e : enemigos) {
             if (e != null && e.estaVivo()) {
                 e.moverAleatorio(filas, columnas);
-                if (Math.random() < 0.5) { // 50% probabilidad de disparar
+                if (Math.random() < 0.5) { 
                     for (int i = 0; i < proyectilesEnemigos.length; i++) {
                         if (proyectilesEnemigos[i] == null || !proyectilesEnemigos[i].estaActivo()) {
                             proyectilesEnemigos[i] = new Proyectil(e.getFila() + 1, e.getColumna(), e.getAtaque(), 1);
