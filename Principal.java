@@ -11,10 +11,9 @@ public class Principal {
         try {
             System.in.read();
         } catch (Exception e) {
-            // Ignorar error
         }
 
-        Juego juego = new Juego(5); // 5 enemigos
+        Juego juego = new Juego(5);
         juego.iniciarJuego();
         Scanner scanner = new Scanner(System.in);
 
