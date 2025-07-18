@@ -3,7 +3,7 @@ package battlespace;
 import java.util.Arrays;
 
 public class CampodeBatalla {
-    private final int filas = 15, columnas = 30;
+    private final int filas = 15, columnas = 20;
     private char[][] campo = new char[filas][columnas];
     private Jugador jugador;
     private Enemigo[] enemigos = new Enemigo[5];
