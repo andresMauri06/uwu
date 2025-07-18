@@ -36,17 +36,17 @@ public class Enemigo {
 
     public void moverAleatorio(int filas, int columnas) {
         Random rand = new Random();
-        int direccion = rand.nextInt(4); // 0: abajo (50%), 1: izquierda, 2: derecha, 3: arriba
+        int direccion = rand.nextInt(4);
         int nuevaFila = this.fila;
         int nuevaColumna = this.columna;
 
-        if (direccion == 0) { // 50% probabilidad de bajar
+        if (direccion == 0) {
             if (nuevaFila < filas - 1) nuevaFila++;
-        } else if (direccion == 1) { // 25% probabilidad de izquierda
+        } else if (direccion == 1) {
             if (nuevaColumna > 0) nuevaColumna--;
-        } else if (direccion == 2) { // 25% probabilidad de derecha
+        } else if (direccion == 2) { 
             if (nuevaColumna < columnas - 1) nuevaColumna++;
-        } else { // 25% probabilidad de subir
+        } else {
             if (nuevaFila > 0) nuevaFila--;
         }
 
@@ -56,7 +56,7 @@ public class Enemigo {
 
     public Mejora soltarMejora() {
         Random rand = new Random();
-        if (rand.nextDouble() < 0.3) { // 30% probabilidad
+        if (rand.nextDouble() < 0.3) {
             String tipoMejora = rand.nextBoolean() ? "vida" : "ataque";
             int valor = 10;
             return new Mejora(tipoMejora, valor, this.fila, this.columna);
