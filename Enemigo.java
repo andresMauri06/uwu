@@ -10,10 +10,10 @@ public class Enemigo {
     private int columna;
     private char simbolo;
 
-    public Enemigo(int fila, int columna) {
-        this.tipo = "NaveAlienigena";
-        this.salud = 50;
-        this.ataque = 10;
+    public Enemigo(String tipo, int salud, int ataque, int fila, int columna) {
+        this.tipo = tipo;
+        this.salud = salud;
+        this.ataque = ataque;
         this.fila = fila;
         this.columna = columna;
         this.simbolo = 'E';
@@ -30,23 +30,23 @@ public class Enemigo {
         System.out.println(tipo + " recibe " + cantidad + " de daño. Salud restante: " + this.salud);
     }
 
-    public boolean estaViva() {
+    public boolean estaVivo() {
         return this.salud > 0;
     }
 
     public void moverAleatorio(int filas, int columnas) {
         Random rand = new Random();
-        int direccion = rand.nextInt(10); 
+        int direccion = rand.nextInt(4); // 0: abajo (50%), 1: izquierda, 2: derecha, 3: arriba
         int nuevaFila = this.fila;
         int nuevaColumna = this.columna;
 
-        if (direccion < 7) { 
+        if (direccion == 0) { // 50% probabilidad de bajar
             if (nuevaFila < filas - 1) nuevaFila++;
-        } else if (direccion == 7) { 
+        } else if (direccion == 1) { // 25% probabilidad de izquierda
             if (nuevaColumna > 0) nuevaColumna--;
-        } else if (direccion == 8) { 
+        } else if (direccion == 2) { // 25% probabilidad de derecha
             if (nuevaColumna < columnas - 1) nuevaColumna++;
-        } else {
+        } else { // 25% probabilidad de subir
             if (nuevaFila > 0) nuevaFila--;
         }
 
@@ -56,12 +56,16 @@ public class Enemigo {
 
     public Mejora soltarMejora() {
         Random rand = new Random();
-        if (rand.nextDouble() < 0.3) {
+        if (rand.nextDouble() < 0.3) { // 30% probabilidad
             String tipoMejora = rand.nextBoolean() ? "vida" : "ataque";
             int valor = 10;
             return new Mejora(tipoMejora, valor, this.fila, this.columna);
         }
         return null;
+    }
+
+    public void mostrarEstado() {
+        System.out.println("Enemigo: " + tipo + " - Salud: " + salud + " - Posición: (" + fila + ", " + columna + ")");
     }
 
     public int getFila() {
@@ -80,7 +84,7 @@ public class Enemigo {
         return simbolo;
     }
 
-    public void mostrarEstado() {
-        System.out.println("Enemigo: " + tipo + " - Salud: " + salud + " - Posición: (" + fila + ", " + columna + ")");
+    public String getTipo() {
+        return tipo;
     }
 }
