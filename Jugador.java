@@ -23,7 +23,7 @@ public class Jugador {
         if (e != null && e.estaVivo()) {
             e.recibirDaño(this.ataque);
             if (!e.estaVivo()) {
-                this.puntaje += 10; // +10 por derrotar enemigo
+                this.puntaje += 10;
             }
         }
     }
