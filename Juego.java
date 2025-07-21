@@ -7,8 +7,8 @@ public class Juego {
     private int turno;
     private Combate combate;
 
-    public Juego(int cantidadEnemigos) {
-        this.jugador = new Jugador("Jugador", 9, 7);
+    public Juego(String nombreJugador, int cantidadEnemigos) {
+        this.jugador = new Jugador(nombreJugador, 9, 7);
         this.enemigos = new Enemigo[cantidadEnemigos];
         this.juegoTerminado = false;
         this.turno = 1;
@@ -40,7 +40,17 @@ public class Juego {
         turno++;
     }
 
-    public void verificarFinDelJuego() {
+    public boolean isJuegoTerminado() {
+        return juegoTerminado;
+    }
+
+    private void generarEnemigos(int cantidad) {
+        for (int i = 0; i < cantidad; i++) {
+            enemigos[i] = new Enemigo("NaveAlienigena", 50, 10, 2, 1 + i * 3);
+        }
+    }
+
+    private void verificarFinDelJuego() {
         if (!jugador.estaVivo()) {
             juegoTerminado = true;
             System.out.println("¡Has perdido! El jugador ha sido derrotado.");
@@ -52,23 +62,6 @@ public class Juego {
         }
     }
 
-    public void mostrarEstado() {
-        System.out.println("Jugador: " + jugador.getNombre() + " - Salud: " + jugador.getSalud() + 
-                           " - Ataque: " + jugador.getAtaque() + " - Puntaje: " + jugador.getPuntaje());
-        System.out.println("Enemigos restantes:");
-        for (Enemigo e : enemigos) {
-            if (e != null && e.estaVivo()) {
-                e.mostrarEstado();
-            }
-        }
-    }
-
-    public void generarEnemigos(int cantidad) {
-        for (int i = 0; i < cantidad; i++) {
-            enemigos[i] = new Enemigo("NaveAlienigena", 50, 10, 2, 1 + i * 3); // Columnas 1, 4, 7, 10, 13
-        }
-    }
-
     private boolean hayEnemigosVivos() {
         for (Enemigo e : enemigos) {
             if (e != null && e.estaVivo()) return true;
@@ -76,7 +69,17 @@ public class Juego {
         return false;
     }
 
-    public boolean isJuegoTerminado() {
+    public void mostrarEstado() {
+        System.out.println("Jugador: " + jugador.getNombre() + " - Salud: " + jugador.getSalud() +
+                " - Ataque: " + jugador.getAtaque() + " - Puntaje: " + jugador.getPuntaje());
+        System.out.println("Enemigos restantes:");
+        for (Enemigo e : enemigos) {
+            if (e != null && e.estaVivo()) {
+                e.mostrarEstado();
+            }
+        }
+    }
+}n isJuegoTerminado() {
         return juegoTerminado;
     }
 }
