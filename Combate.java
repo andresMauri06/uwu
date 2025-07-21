@@ -129,7 +129,11 @@ public class Combate {
 
     private void recogerMejora() {
         for (int i = 0; i < mejoras.length; i++) {
-            if (mejoras[i] != null && mejoras[i].getFila() == jugador.getFila() && mejoras[i].getColumna() == jugador.getColumna()) {
+            if (mejoras[i] != null &&
+                mejoras[i].getFila() == jugador.getFila() &&
+                mejoras[i].getColumna() == jugador.getColumna()) {
+
+                System.out.println("¡Has recogido una mejora! " + mejoras[i].descripcion());
                 jugador.usarMejora(mejoras[i]);
                 mejoras[i] = null;
                 break;
@@ -171,16 +175,11 @@ public class Combate {
         }
         for (Mejora m : mejoras) {
             if (m != null) {
-                campo[m.getFila()][m.getColumna()] = '+';
+                campo[m.getFila()][m.getColumna()] = '+'; 
             }
         }
         for (char[] fila : campo) {
             System.out.println(new String(fila));
         }
-    }
-}
-
-    public Enemigo[] getEnemigos() {
-        return enemigos;
     }
 }
