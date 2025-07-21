@@ -80,7 +80,3 @@ public class Juego {
         }
     }
 }
-}n isJuegoTerminado() {
-        return juegoTerminado;
-    }
-}
