@@ -53,11 +53,11 @@ public class Juego {
     private void verificarFinDelJuego() {
         if (!jugador.estaVivo()) {
             juegoTerminado = true;
-            System.out.println("¡Has perdido! El jugador ha sido derrotado.");
+            System.out.println("¡Has perdido! " + jugador.getNombre() + " ha sido derrotado.");
             System.out.println("Puntaje final: " + jugador.getPuntaje());
         } else if (!hayEnemigosVivos()) {
             juegoTerminado = true;
-            System.out.println("¡Has ganado! Todos los enemigos han sido derrotados.");
+            System.out.println("¡Has ganado! " + jugador.getNombre() + " ha derrotado a todos los enemigos.");
             System.out.println("Puntaje final: " + jugador.getPuntaje());
         }
     }
