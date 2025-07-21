@@ -55,11 +55,13 @@ public class Enemigo {
     }
 
     public Mejora soltarMejora() {
-        Random rand = new Random();
+    Random rand = new Random();
+    if (rand.nextDouble() < 1.0) {
         String tipoMejora = rand.nextBoolean() ? "vida" : "ataque";
         int valor = 10;
         return new Mejora(tipoMejora, valor, this.fila, this.columna);
     }
+    return null;
 
     public void mostrarEstado() {
         System.out.println("Enemigo: " + tipo + " - Salud: " + salud + " - Posición: (" + fila + ", " + columna + ")");
