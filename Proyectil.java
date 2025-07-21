@@ -38,7 +38,4 @@ public class Proyectil {
     public int getDaño() {
         return this.daño;
     }
-}public int getDaño() {
-        return this.daño;
-    }
 }
