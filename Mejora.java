@@ -22,7 +22,8 @@ public class Mejora {
     }
 
     public String descripcion() {
-        return "Mejora de " + tipo + " con valor +" + valor;
+        String tipoBonito = tipo.equals("vida") ? "Salud" : "Ataque";
+        return tipoBonito + " +" + valor;
     }
 
     public int getFila() {
