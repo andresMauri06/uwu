@@ -44,7 +44,7 @@ public class Enemigo {
             if (nuevaFila < filas - 1) nuevaFila++;
         } else if (direccion == 1) {
             if (nuevaColumna > 0) nuevaColumna--;
-        } else if (direccion == 2) { 
+        } else if (direccion == 2) {
             if (nuevaColumna < columnas - 1) nuevaColumna++;
         } else {
             if (nuevaFila > 0) nuevaFila--;
@@ -56,12 +56,9 @@ public class Enemigo {
 
     public Mejora soltarMejora() {
         Random rand = new Random();
-        if (rand.nextDouble() < 0.3) {
-            String tipoMejora = rand.nextBoolean() ? "vida" : "ataque";
-            int valor = 10;
-            return new Mejora(tipoMejora, valor, this.fila, this.columna);
-        }
-        return null;
+        String tipoMejora = rand.nextBoolean() ? "vida" : "ataque";
+        int valor = 10;
+        return new Mejora(tipoMejora, valor, this.fila, this.columna);
     }
 
     public void mostrarEstado() {
