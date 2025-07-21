@@ -1,5 +1,8 @@
 package battlespace;
 
+import battlespace.Enemigo;
+import battlespace.Mejora;
+
 public class Jugador {
     private String nombre;
     private int salud;
@@ -41,10 +44,10 @@ public class Jugador {
         if (m.getTipo().equals("vida")) {
             this.salud += m.getValor();
             if (this.salud > 100) this.salud = 100;
-            System.out.println("Jugador recibe mejora de vida +" + m.getValor() + ". Salud actual: " + this.salud);
+            System.out.println("¡" + nombre + " recibe una mejora de VIDA! +" + m.getValor() + " → Salud actual: " + this.salud);
         } else if (m.getTipo().equals("ataque")) {
             this.ataque += m.getValor();
-            System.out.println("Jugador recibe mejora de ataque +" + m.getValor() + ". Ataque actual: " + this.ataque);
+            System.out.println("¡" + nombre + " recibe una mejora de ATAQUE! +" + m.getValor() + " → Ataque actual: " + this.ataque);
         }
     }
 
