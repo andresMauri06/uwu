@@ -67,18 +67,6 @@ public class Combate {
         }
     }
 
-    public void verificarMejora(Enemigo e) {
-        Mejora mejora = e.soltarMejora();
-        if (mejora != null && mejora.getFila() < filas && mejora.getColumna() < columnas) {
-            for (int i = 0; i < mejoras.length; i++) {
-                if (mejoras[i] == null) {
-                    mejoras[i] = mejora;
-                    break;
-                }
-            }
-        }
-    }
-
     private void dispararJugador() {
         for (int i = 0; i < proyectilesJugador.length; i++) {
             if (proyectilesJugador[i] == null || !proyectilesJugador[i].estaActivo()) {
@@ -99,14 +87,22 @@ public class Combate {
                 for (Enemigo e : enemigos) {
                     if (e != null && e.estaVivo() && p.getFila() == e.getFila() && p.getColumna() == e.getColumna()) {
                         e.recibirDaño(p.getDaño());
-                        jugador.incrementarPuntaje(10); // +10 por impacto
+                        jugador.incrementarPuntaje(10); 
                         p.desactivar();
                         break;
+                    }
+                }
+                
+                for (Proyectil pe : proyectilesEnemigos) {
+                    if (pe != null && pe.estaActivo() && p.getFila() == pe.getFila() && p.getColumna() == pe.getColumna()) {
+                        p.desactivar();
+                        pe.desactivar();
                     }
                 }
             }
         }
 
+        
         for (Proyectil p : proyectilesEnemigos) {
             if (p != null && p.estaActivo()) {
                 p.mover();
@@ -120,6 +116,15 @@ public class Combate {
                 }
             }
         }
+
+        for (Enemigo e : enemigos) {
+            if (e != null && e.estaVivo()) {
+                if (jugador.getFila() == e.getFila() && jugador.getColumna() == e.getColumna()) {
+                    jugador.recibirDaño(jugador.getSalud()); 
+                    System.out.println("¡Has chocado contra un enemigo! Has muerto.");
+                }
+            }
+        }
     }
 
     private void recogerMejora() {
@@ -128,6 +133,18 @@ public class Combate {
                 jugador.usarMejora(mejoras[i]);
                 mejoras[i] = null;
                 break;
+            }
+        }
+    }
+
+    private void verificarMejora(Enemigo e) {
+        Mejora mejora = e.soltarMejora();
+        if (mejora != null && mejora.getFila() < filas && mejora.getColumna() < columnas) {
+            for (int i = 0; i < mejoras.length; i++) {
+                if (mejoras[i] == null) {
+                    mejoras[i] = mejora;
+                    break;
+                }
             }
         }
     }
@@ -161,10 +178,7 @@ public class Combate {
             System.out.println(new String(fila));
         }
     }
-
-    public Jugador getJugador() {
-        return jugador;
-    }
+}
 
     public Enemigo[] getEnemigos() {
         return enemigos;
