@@ -14,7 +14,7 @@ public class Principal {
         System.out.println("¡Presiona ENTER para comenzar!");
         scanner.nextLine(); 
 
-        Juego juego = new Juego(nombreJugador, 1);
+        Juego juego = new Juego(nombreJugador, 5);
         juego.iniciarJuego();
 
         while (!juego.isJuegoTerminado()) {
@@ -32,4 +32,3 @@ public class Principal {
         }
     }
 }
-
